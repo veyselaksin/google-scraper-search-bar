@@ -53,7 +53,7 @@
                 console.log(e.key.length)
                 if (searchText !== "") {
                     if (e.key.length === 1 || e.key.length === 9){
-                        let response = fetch('apps', {
+                        let response = fetch('all-apps', {
                             method: "POST",
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({ payload: searchText })

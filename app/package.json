@@ -11,7 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.0",
-    "google-play-scraper": "^8.1.0"
+    "google-play-scraper": "^8.1.0",
+    "mongoose": "^6.3.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

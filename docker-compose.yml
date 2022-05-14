@@ -1,0 +1,36 @@
+version: "3.4"
+
+services:
+  node-server:
+    container_name: google-apps-server
+    build: .
+    ports:
+      - 3000:3000
+
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data:/data/db
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+    hostname: nginx
+    ports: 
+      - 80:80
+    depends_on:
+      - node-server
+    networks:
+      - node-network
+
+volumes:
+  mongodb_data:
+
+
+networks:
+  node-network:
+    external: true
