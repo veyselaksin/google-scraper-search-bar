@@ -34,14 +34,14 @@ app.get("/all-apps", async (request, response) => {
     response.send(search);
 })
 
-app.post("/all-apps", async (request, response) => {
-    let payload = request.body.payload.trim();
-    let g_search = await gplay.search({ term: `${payload}`, throttle: 10 });
-    let m_search = await AppModel.find({ gameName: { $regex: new RegExp('^' + payload + '.*', 'i') } }).exec();
-    m_search = m_search.slice(0, 10);
-    let search = g_search.concat(m_search)
-    response.send({ payload: search })
-})
+// app.post("/all-apps", async (request, response) => {
+//     let payload = request.body.payload.trim();
+//     let g_search = await gplay.search({ term: `${payload}`, throttle: 10 });
+//     let m_search = await AppModel.find({ gameName: { $regex: new RegExp('^' + payload + '.*', 'i') } }).exec();
+//     m_search = m_search.slice(0, 10);
+//     let search = g_search.concat(m_search)
+//     response.send({ payload: search })
+// })
 
 app.listen(PORT, async () => {
     console.log(`Server has started on PORT ${PORT}`)
